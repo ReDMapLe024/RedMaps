@@ -1,0 +1,67 @@
+public class Main(){
+
+  public static void main(String [] args){
+    
+    int [][] map;
+    DiamondSquare ds = new DiamondSquare(8);
+    
+    map = ds.getMap();
+    
+    smooth(map);
+    addBorders(map);
+    addCorners(map);
+    
+  }
+  
+  public int[][] smooth(int [][] map){
+    for(int i = 0; i < map.length; i++){
+      for(int j = 0; j < map.length; j++){
+        if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
+          
+          //WATER Smoothing
+          if(map[i+1][j] == WATER && map[i-1][j] == WATER && map[i][j+1] == WATER && map[i][j-1] == WATER){
+            map[i][j] = WATER;
+          }
+          if(map[i+1][j] != WATER && map[i-1][j] == WATER && map[i][j+1] == WATER && map[i][j-1] == WATER){
+            map[i][j] = WATER;
+          }
+          if(map[i+1][j] == WATER && map[i-1][j] != WATER && map[i][j+1] == WATER && map[i][j-1] == WATER){
+            map[i][j] = WATER;
+          }
+          if(map[i+1][j] == WATER && map[i-1][j] == WATER && map[i][j+1] != WATER && map[i][j-1] == WATER){
+            map[i][j] = WATER;
+          }
+          if(map[i+1][j] == WATER && map[i-1][j] == WATER && map[i][j+1] == WATER && map[i][j-1] != WATER){
+            map[i][j] = WATER;
+          }
+          
+          
+          //GRASS Smoothing
+          if(map[i+1][j] == GRASS && map[i-1][j] == GRASS && map[i][j+1] == GRASS && map[i][j-1] == GRASS){
+            map[i][j] = GRASS;
+          }
+          if(map[i+1][j] != GRASS && map[i-1][j] == GRASS && map[i][j+1] == GRASS && map[i][j-1] == GRASS){
+            map[i][j] = GRASS;
+          }
+          if(map[i+1][j] == GRASS && map[i-1][j] != GRASS && map[i][j+1] == GRASS && map[i][j-1] == GRASS){
+            map[i][j] = GRASS;
+          }
+          if(map[i+1][j] == GRASS && map[i-1][j] == GRASS && map[i][j+1] != GRASS && map[i][j-1] == GRASS){
+            map[i][j] = GRASS;
+          }
+          if(map[i+1][j] == GRASS && map[i-1][j] == GRASS && map[i][j+1] == GRASS && map[i][j-1] != GRASS){
+            map[i][j] = GRASS;
+          }
+        }
+      }
+    }
+  }
+  public int [][] addBorders(int [][] map){
+    for(int i = 0; i < map.length; i++){
+      for(int j = 0; j < map.length; i++){
+        if(map[i+1][j] && map[][])
+      }
+    }
+  }
+
+}
