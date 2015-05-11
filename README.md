@@ -5,4 +5,4 @@
     - Map smoothing to prevent "rogue" single tiles
     - Lake edge, border and corner tile fubctuibs to
       add them on the map.
-    - More to follow...
+    - More to follow.../
