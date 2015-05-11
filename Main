@@ -2,24 +2,37 @@ public class Main(){
 
   public static void main(String [] args){
     
-    public static final int WATER, GRASS, MOUNTAIN;
-    
-    WATER = 1;
-    BORDER_WATER_N;
-    BORDER_WATER_E;
-    BORDER_WATER_S;
-    BORDER_WATER_W;
-    EDGE_WATER_NE;
-    EDGE_WATER_NW;
-    EDGE_WATER_SE;
-    EDGE_WATER_SW;
-    CORNER_WATER_NE;
-    CORNER_WATER_NW;
-    CORNER_WATER_SE;
+    public static final int WATER, 
+    GRASS, MOUNTAIN,
+    BORDER_WATER_N,
+    BORDER_WATER_E,
+    BORDER_WATER_S,
+    BORDER_WATER_W,
+    EDGE_WATER_NE,
+    EDGE_WATER_NW,
+    EDGE_WATER_SE,
+    EDGE_WATER_SW,
+    CORNER_WATER_NE,
+    CORNER_WATER_NW,
+    CORNER_WATER_SE,
     CORNER_WATER_SW;
     
-    GRASS = 2;
-    MOUNTAIN = 3;
+    WATER = 1;
+    BORDER_WATER_N = 2;
+    BORDER_WATER_E = 3;
+    BORDER_WATER_S = 4;
+    BORDER_WATER_W = 5;
+    EDGE_WATER_NE = 6;
+    EDGE_WATER_NW = 7;
+    EDGE_WATER_SE = 8;
+    EDGE_WATER_SW = 9;
+    CORNER_WATER_NE = 10;
+    CORNER_WATER_NW = 11;
+    CORNER_WATER_SE = 12;
+    CORNER_WATER_SW = 13;
+    
+    GRASS = 14;
+    MOUNTAIN = 15;
     
     int [][] map;
     DiamondSquare ds = new DiamondSquare(8);
