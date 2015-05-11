@@ -2,6 +2,12 @@ public class Main(){
 
   public static void main(String [] args){
     
+    public static final int WATER, GRASS, MOUNTAIN;
+    
+    WATER = 1;
+    GRASS = 2;
+    MOUNTAIN = 3;
+    
     int [][] map;
     DiamondSquare ds = new DiamondSquare(8);
     
@@ -17,6 +23,7 @@ public class Main(){
     for(int i = 0; i < map.length; i++){
       for(int j = 0; j < map.length; j++){
         if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
+          
           
           //WATER Smoothing
           if(map[i+1][j] == WATER && map[i-1][j] == WATER && map[i][j+1] == WATER && map[i][j-1] == WATER){
@@ -52,14 +59,41 @@ public class Main(){
           if(map[i+1][j] == GRASS && map[i-1][j] == GRASS && map[i][j+1] == GRASS && map[i][j-1] != GRASS){
             map[i][j] = GRASS;
           }
+          
+          
+          //MOUNTAIN Smoothing
+          if(map[i+1][j] == MOUNTAIN && map[i-1][j] == MOUNTAIN && map[i][j+1] == MOUNTAIN && map[i][j-1] == MOUNTAIN){
+            map[i][j] = MOUNTAIN;
+          }
+          if(map[i+1][j] != MOUNTAIN && map[i-1][j] == MOUNTAIN && map[i][j+1] == MOUNTAIN && map[i][j-1] == MOUNTAIN){
+            map[i][j] = MOUNTAIN;
+          }
+          if(map[i+1][j] == MOUNTAIN && map[i-1][j] != MOUNTAIN && map[i][j+1] == MOUNTAIN && map[i][j-1] == MOUNTAIN){
+            map[i][j] = MOUNTAIN;
+          }
+          if(map[i+1][j] == MOUNTAIN && map[i-1][j] == MOUNTAIN && map[i][j+1] != MOUNTAIN && map[i][j-1] == MOUNTAIN){
+            map[i][j] = MOUNTAIN;
+          }
+          if(map[i+1][j] == MOUNTAIN && map[i-1][j] == MOUNTAIN && map[i][j+1] == MOUNTAIN && map[i][j-1] != MOUNTAIN){
+            map[i][j] = MOUNTAIN;
+          }
         }
       }
     }
   }
+  
+  
   public int [][] addBorders(int [][] map){
     for(int i = 0; i < map.length; i++){
       for(int j = 0; j < map.length; i++){
-        if(map[i+1][j] && map[][])
+        if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
+          if(map[i+1][j] == WATER && map[i-1][j] != WATER && map[i][j+1] != WATER && map[i][j-1] != WATER){
+            //TO-DO implement adding border tiles to the map
+          }
+          if(map[i+1][j] != WATER && map[i-1][j] == WATER && map[i][j+1] != WATER && map[i][j-1] != WATER){
+            //TO-DO implement adding border tiles to the map
+          }
+        }
       }
     }
   }
