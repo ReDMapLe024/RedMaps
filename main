@@ -5,6 +5,19 @@ public class Main(){
     public static final int WATER, GRASS, MOUNTAIN;
     
     WATER = 1;
+    BORDER_WATER_N;
+    BORDER_WATER_E;
+    BORDER_WATER_S;
+    BORDER_WATER_W;
+    EDGE_WATER_NE;
+    EDGE_WATER_NW;
+    EDGE_WATER_SE;
+    EDGE_WATER_SW;
+    CORNER_WATER_NE;
+    CORNER_WATER_NW;
+    CORNER_WATER_SE;
+    CORNER_WATER_SW;
+    
     GRASS = 2;
     MOUNTAIN = 3;
     
@@ -132,17 +145,17 @@ public class Main(){
     for(int i = 0; i < map.length; i++){
       for(int j = 0; j < map.length; i++){
         if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
-          if((map[i+1][j] == BORDER_W || map[i+1][j] == EDGE_WATER_NW) && (map[i][j+1] == BORDER_N || map[i][j+1] == EDGE_WATER_NW)){
-            map[i][j] == CORNER_NW;
+          if((map[i+1][j] == BORDER_WATER_W || map[i+1][j] == EDGE_WATER_NW) && (map[i][j+1] == BORDER_WATER_N || map[i][j+1] == EDGE_WATER_NW)){
+            map[i][j] == CORNER_WATER_NW;
           }
-          if((map[i+1][j] == BORDER_E || map[i+1][j] == EDGE_WATER_NE) && (map[i][j-1] == BORDER_N|| map[i][j-1] == EDGE_WATER_NE)){
-            map[i][j] == CORNER_NE;
+          if((map[i+1][j] == BORDER_WATER_E || map[i+1][j] == EDGE_WATER_NE) && (map[i][j-1] == BORDER_WATER_N|| map[i][j-1] == EDGE_WATER_NE)){
+            map[i][j] == CORNER_WATER_NE;
           }
-          if((map[i-1][j] == BORDER_W || map[i-1][j] == EDGE_WATER_SW) && (map[i][j+1] == BORDER_S|| map[i][j+1] == EDGE_WATER_SW)){
-            map[i][j] == CORNER_SW;
+          if((map[i-1][j] == BORDER_WATER_W || map[i-1][j] == EDGE_WATER_SW) && (map[i][j+1] == BORDER_WATER_S|| map[i][j+1] == EDGE_WATER_SW)){
+            map[i][j] == CORNER_WATER_SW;
           }
-          if((map[i-1][j] == BORDER_E || map[i-1][j] == EDGE_WATER_SE && (map[i][j-1] == BORDER_S || map[i][j-1] == EDGE_WATER_SE)){
-            map[i][j] == CORNER_SE;
+          if((map[i-1][j] == BORDER_WATER_E || map[i-1][j] == EDGE_WATER_SE && (map[i][j-1] == BORDER_WATER_S || map[i][j-1] == EDGE_WATER_SE)){
+            map[i][j] == CORNER_WATER_SE;
           }
         }
       }
