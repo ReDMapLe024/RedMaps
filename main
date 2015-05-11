@@ -15,6 +15,7 @@ public class Main(){
     
     smooth(map);
     addBorders(map);
+    addEdges(map);
     addCorners(map);
     
   }
@@ -93,9 +94,58 @@ public class Main(){
           if(map[i+1][j] != WATER && map[i-1][j] == WATER && map[i][j+1] != WATER && map[i][j-1] != WATER){
             //TO-DO implement adding border tiles to the map
           }
+          if(map[i+1][j] != WATER && map[i-1][j] != WATER && map[i][j+1] == WATER && map[i][j-1] != WATER){
+            //TO-DO implement adding border tiles to the map
+          }
+          if(map[i+1][j] != WATER && map[i-1][j] != WATER && map[i][j+1] != WATER && map[i][j-1] == WATER){
+            //TO-DO implement adding border tiles to the map
+          }
         }
       }
     }
   }
-
+  
+  
+  public int [][] addEdges(int [][] map){
+    for(int i = 0; i < map.length; i++){
+      for(int j = 0; j < map.length; i++){
+        if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
+          if(map[i+1][j] == WATER && map[i-1][j] != WATER && map[i][j+1] == WATER && map[i][j-1] != WATER){
+            //TO-DO implement adding edge tiles to the map
+          }
+          if(map[i+1][j] != WATER && map[i-1][j] == WATER && map[i][j+1] == WATER && map[i][j-1] != WATER){
+            //TO-DO implement adding edge tiles to the map
+          }
+          if(map[i+1][j] == WATER && map[i-1][j] != WATER && map[i][j+1] != WATER && map[i][j-1] == WATER){
+            //TO-DO implement adding edge tiles to the map
+          }
+          if(map[i+1][j] != WATER && map[i-1][j] == WATER && map[i][j+1] != WATER && map[i][j-1] == WATER){
+            //TO-DO implement adding edge tiles to the map
+          }
+        }
+      }
+    }
+  }
+  
+  
+  public int [][] addCorners(int [][] map){
+    for(int i = 0; i < map.length; i++){
+      for(int j = 0; j < map.length; i++){
+        if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
+          if((map[i+1][j] == BORDER_WEST || map[i+1][j] == EDGE_NORTH_WEST) && (map[i][j+1] == BORDER_NORTH || map[i][j+1] == EDGE_NORTH_WEST)){
+            //TO-DO implement adding corner tiles to the map
+          }
+          if((map[i+1][j] == BORDER_EAST || map[i+1][j] == EDGE_NORTH_EAST) && (map[i][j-1] == BORDER_NORTH || map[i][j-1] == EDGE_NORTH_EAST)){
+            //TO-DO implement adding corner tiles to the map
+          }
+          if((map[i-1][j] == BORDER_WEST || map[i-1][j] == EDGE_SOUTH_WEST) && (map[i][j+1] == BORDER_SOUTH || map[i][j+1] == EDGE_SOUTH_WEST)){
+            //TO-DO implement adding corner tiles to the map
+          }
+          if((map[i-1][j] == BORDER_EAST || map[i-1][j] == EDGE_SOUTH_EAST) && (map[i][j-1] == BORDER_SOUTH || map[i][j-1] == EDGE_SOUTH_EAST)){
+            //TO-DO implement adding corner tiles to the map
+          }
+        }
+      }
+    }
+  }
 }
