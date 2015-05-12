@@ -17,19 +17,6 @@ public class Main(){
     CORNER_WATER_SE,
     CORNER_WATER_SW;
     
-    WATER = 1;
-    BORDER_WATER_N = 2;
-    BORDER_WATER_E = 3;
-    BORDER_WATER_S = 4;
-    BORDER_WATER_W = 5;
-    EDGE_WATER_NE = 6;
-    EDGE_WATER_NW = 7;
-    EDGE_WATER_SE = 8;
-    EDGE_WATER_SW = 9;
-    CORNER_WATER_NE = 10;
-    CORNER_WATER_NW = 11;
-    CORNER_WATER_SE = 12;
-    CORNER_WATER_SW = 13;
     
     GRASS = 14;
     MOUNTAIN = 15;
