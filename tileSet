@@ -1,0 +1,39 @@
+public class TileSet{
+  
+  //Dimension of 1 tile
+  private int width;
+  private int height;
+  
+  //Dimensions of the tileSet;
+  private int rows;
+  private int cols;
+  
+  //tileSet arrays and multidemensional arrays
+  private BufferedImage [] img;
+  private BufferedImage[][] tileSet;
+  
+  public TileSet(String src, int width, int height, int rows, int cols){
+    
+    this.rows = rows;
+    this.cols = cols;
+    this.width = width;
+    this.height = height;
+    
+    tileSet = new BufferedImage[rows][cols];
+    img = this.getClass().getResourceAsStream(src);
+    spriteLoader();
+    
+  }
+  
+  public void spriteLoader(){
+  
+    for(int i = 0; i < rows; i++){
+      for(int j = 0; j < cols; j++){
+        sprites[i][j] = img.getSubImage(j * width. i * height, width, height);
+      }
+    }
+  }
+  
+  public int getTile(int x, int y){ return tileSet[x][y]; }
+  
+}
