@@ -17,31 +17,40 @@ public class MapGenerator{
   GRASS;
   MOUNTAIN;
     
-    private DiamondSquare ds;
+  private DiamondSquare ds;
+  private int [][] map;
     
-    public MapGenerator(DiamondSquare ds){
+  public MapGenerator(int size){
       
-      this.ds = ds;
+    WATER = 0; 
+    BORDER_WATER_N = 1;
+    BORDER_WATER_E = 2;
+    BORDER_WATER_S = 3;
+    BORDER_WATER_W = 4;
+    EDGE_WATER_NE = 5;
+    EDGE_WATER_NW = 6;
+    EDGE_WATER_SE = 7;
+    EDGE_WATER_SW = 9;
+    CORNER_WATER_NE = 10;
+    CORNER_WATER_NW = 11;
+    CORNER_WATER_SE = 12;
+    CORNER_WATER_SW = 13;
+    GRASS = 14;
+    MOUNTAIN = 15;
+    
+    ds = new DiamondSquare(size);
+    map = ds.getMap();
+    
+    map = smooth(map);
+    map = addBorders(map);
+    map = addEdges(map);
+    map = addCorners(map);
       
-      WATER = 0; 
-      BORDER_WATER_N = 1;
-      BORDER_WATER_E = 2;
-      BORDER_WATER_S = 3;
-      BORDER_WATER_W = 4;
-      EDGE_WATER_NE = 5;
-      EDGE_WATER_NW = 6;
-      EDGE_WATER_SE = 7;
-      EDGE_WATER_SW = 9;
-      CORNER_WATER_NE = 10;
-      CORNER_WATER_NW = 11;
-      CORNER_WATER_SE = 12;
-      CORNER_WATER_SW = 13;
-      GRASS = 14;
-      MOUNTAIN = 15;
+  }
+  
+  public int[][] getMap(){ return map; }
     
-    }
-    
-    public int[][] smooth(int [][] map){
+  public int[][] smooth(int [][] map){
     for(int i = 0; i < map.length; i++){
       for(int j = 0; j < map.length; j++){
         if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
