@@ -24,147 +24,16 @@ public class Main(){
     int height;
     int rows;
     int cols;
+    int size;
     String src;
     
     int [][] map;
-    DiamondSquare ds = new DiamondSquare(8);
-    map = ds.getMap();
+    MapGenerator mg = new MapGenerator(size);
+    map = mg.getMap();
     
     TileSet tileSet = new TileSet(src, width, height, rows, cols);
-    
-    smooth(map);
-    addBorders(map);
-    addEdges(map);
-    addCorners(map);
+   
     
   }
   
-  public int[][] smooth(int [][] map){
-    for(int i = 0; i < map.length; i++){
-      for(int j = 0; j < map.length; j++){
-        if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
-          
-          
-          //WATER Smoothing
-          if(map[i+1][j] == WATER && map[i-1][j] == WATER && map[i][j+1] == WATER && map[i][j-1] == WATER){
-            map[i][j] = WATER;
-          }
-          if(map[i+1][j] != WATER && map[i-1][j] == WATER && map[i][j+1] == WATER && map[i][j-1] == WATER){
-            map[i][j] = WATER;
-          }
-          if(map[i+1][j] == WATER && map[i-1][j] != WATER && map[i][j+1] == WATER && map[i][j-1] == WATER){
-            map[i][j] = WATER;
-          }
-          if(map[i+1][j] == WATER && map[i-1][j] == WATER && map[i][j+1] != WATER && map[i][j-1] == WATER){
-            map[i][j] = WATER;
-          }
-          if(map[i+1][j] == WATER && map[i-1][j] == WATER && map[i][j+1] == WATER && map[i][j-1] != WATER){
-            map[i][j] = WATER;
-          }
-          
-          
-          //GRASS Smoothing
-          if(map[i+1][j] == GRASS && map[i-1][j] == GRASS && map[i][j+1] == GRASS && map[i][j-1] == GRASS){
-            map[i][j] = GRASS;
-          }
-          if(map[i+1][j] != GRASS && map[i-1][j] == GRASS && map[i][j+1] == GRASS && map[i][j-1] == GRASS){
-            map[i][j] = GRASS;
-          }
-          if(map[i+1][j] == GRASS && map[i-1][j] != GRASS && map[i][j+1] == GRASS && map[i][j-1] == GRASS){
-            map[i][j] = GRASS;
-          }
-          if(map[i+1][j] == GRASS && map[i-1][j] == GRASS && map[i][j+1] != GRASS && map[i][j-1] == GRASS){
-            map[i][j] = GRASS;
-          }
-          if(map[i+1][j] == GRASS && map[i-1][j] == GRASS && map[i][j+1] == GRASS && map[i][j-1] != GRASS){
-            map[i][j] = GRASS;
-          }
-          
-          
-          //MOUNTAIN Smoothing
-          if(map[i+1][j] == MOUNTAIN && map[i-1][j] == MOUNTAIN && map[i][j+1] == MOUNTAIN && map[i][j-1] == MOUNTAIN){
-            map[i][j] = MOUNTAIN;
-          }
-          if(map[i+1][j] != MOUNTAIN && map[i-1][j] == MOUNTAIN && map[i][j+1] == MOUNTAIN && map[i][j-1] == MOUNTAIN){
-            map[i][j] = MOUNTAIN;
-          }
-          if(map[i+1][j] == MOUNTAIN && map[i-1][j] != MOUNTAIN && map[i][j+1] == MOUNTAIN && map[i][j-1] == MOUNTAIN){
-            map[i][j] = MOUNTAIN;
-          }
-          if(map[i+1][j] == MOUNTAIN && map[i-1][j] == MOUNTAIN && map[i][j+1] != MOUNTAIN && map[i][j-1] == MOUNTAIN){
-            map[i][j] = MOUNTAIN;
-          }
-          if(map[i+1][j] == MOUNTAIN && map[i-1][j] == MOUNTAIN && map[i][j+1] == MOUNTAIN && map[i][j-1] != MOUNTAIN){
-            map[i][j] = MOUNTAIN;
-          }
-        }
-      }
-    }
-  }
-  
-  
-  public int [][] addBorders(int [][] map){
-    for(int i = 0; i < map.length; i++){
-      for(int j = 0; j < map.length; i++){
-        if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
-          if(map[i+1][j] == WATER && map[i-1][j] != WATER && map[i][j+1] != WATER && map[i][j-1] != WATER){
-            //TO-DO implement adding border tiles to the map
-          }
-          if(map[i+1][j] != WATER && map[i-1][j] == WATER && map[i][j+1] != WATER && map[i][j-1] != WATER){
-            //TO-DO implement adding border tiles to the map
-          }
-          if(map[i+1][j] != WATER && map[i-1][j] != WATER && map[i][j+1] == WATER && map[i][j-1] != WATER){
-            //TO-DO implement adding border tiles to the map
-          }
-          if(map[i+1][j] != WATER && map[i-1][j] != WATER && map[i][j+1] != WATER && map[i][j-1] == WATER){
-            //TO-DO implement adding border tiles to the map
-          }
-        }
-      }
-    }
-  }
-  
-  
-  public int [][] addEdges(int [][] map){
-    for(int i = 0; i < map.length; i++){
-      for(int j = 0; j < map.length; i++){
-        if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
-          if(map[i+1][j] == WATER && map[i-1][j] != WATER && map[i][j+1] == WATER && map[i][j-1] != WATER){
-            map[i][j] == EDGE_WATER_NW;
-          }
-          if(map[i+1][j] != WATER && map[i-1][j] == WATER && map[i][j+1] == WATER && map[i][j-1] != WATER){
-            map[i][j] = EDGE_WATER_NE;
-          }
-          if(map[i+1][j] == WATER && map[i-1][j] != WATER && map[i][j+1] != WATER && map[i][j-1] == WATER){
-            map[i][j] = EDGE_WATER_SW;
-          }
-          if(map[i+1][j] != WATER && map[i-1][j] == WATER && map[i][j+1] != WATER && map[i][j-1] == WATER){
-            map[i][j] = EDGE_WATER_SE;
-          }
-        }
-      }
-    }
-  }
-  
-  
-  public int [][] addCorners(int [][] map){
-    for(int i = 0; i < map.length; i++){
-      for(int j = 0; j < map.length; i++){
-        if(map[i+1][j] <= map.length && map[i-1][j] >= map.length && map[i][j+1] <= map.length && map[i][j-1] >= map.length){
-          if((map[i+1][j] == BORDER_WATER_W || map[i+1][j] == EDGE_WATER_NW) && (map[i][j+1] == BORDER_WATER_N || map[i][j+1] == EDGE_WATER_NW)){
-            map[i][j] == CORNER_WATER_NW;
-          }
-          if((map[i+1][j] == BORDER_WATER_E || map[i+1][j] == EDGE_WATER_NE) && (map[i][j-1] == BORDER_WATER_N|| map[i][j-1] == EDGE_WATER_NE)){
-            map[i][j] == CORNER_WATER_NE;
-          }
-          if((map[i-1][j] == BORDER_WATER_W || map[i-1][j] == EDGE_WATER_SW) && (map[i][j+1] == BORDER_WATER_S|| map[i][j+1] == EDGE_WATER_SW)){
-            map[i][j] == CORNER_WATER_SW;
-          }
-          if((map[i-1][j] == BORDER_WATER_E || map[i-1][j] == EDGE_WATER_SE && (map[i][j-1] == BORDER_WATER_S || map[i][j-1] == EDGE_WATER_SE)){
-            map[i][j] == CORNER_WATER_SE;
-          }
-        }
-      }
-    }
-  }
 }
