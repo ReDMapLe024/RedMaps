@@ -1,25 +1,6 @@
 public class Main(){
 
   public static void main(String [] args){
-    
-    public static final int WATER, 
-    GRASS, MOUNTAIN,
-    BORDER_WATER_N,
-    BORDER_WATER_E,
-    BORDER_WATER_S,
-    BORDER_WATER_W,
-    EDGE_WATER_NE,
-    EDGE_WATER_NW,
-    EDGE_WATER_SE,
-    EDGE_WATER_SW,
-    CORNER_WATER_NE,
-    CORNER_WATER_NW,
-    CORNER_WATER_SE,
-    CORNER_WATER_SW;
-    
-    
-    GRASS = 14;
-    MOUNTAIN = 15;
     int width;
     int height;
     int rows;
@@ -27,11 +8,37 @@ public class Main(){
     int size;
     String src;
     
+    JFrame frame = new Frame("RedMaps");
+    frame.setVisible(true);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(200, 400);
+    frame.setLocation(null);
+    
+    JPanel panel = new JPanel();
+    
+    JLabel label1 = new JLabel("Welcome to RedMaps!");
+    panel.add(label1);
+    
+    JFileChooser fc = new JFileChooser();
+    JTextField sizeChoice = new JTextField();
+    JTextField widthChoice = new JTextField();
+    JTextField heightChoice = new JTextField();
+    JTextField rowsChoise = new JTextField();
+    JTextField colsChoise = new JTextField();
+    
+    src = fc.getSelectedFile().getAbsolutePath();
+    size = Integer.parseInt(sizeChoice.getText());
+    width = Integer.parseInt(widthChoice.getText());
+    height = Integer.parseInt(heightChoice.getText());
+    rows = Integer.parseInt(rowsChoice.getText());
+    cols = Integer.parseInt(colsChoice.getText());
+    
     int [][] map;
+  
     MapGenerator mg = new MapGenerator(size);
     map = mg.getMap();
     
-    TileSet tileSet = new TileSet(src, width, height, rows, cols);
+    TileSet ts = new TileSet(src, width, height, rows, cols);
    
     
   }
