@@ -1,4 +1,9 @@
-# RedMaps - tileSet loader
+# RedMaps
+    RedMaps is a Random/procedural map generator that allows you to pick and
+    choose the customize the dimensions and other aspects of your map such as frequencies
+    and complexity of your map. This tool also allows you to use your own custom 
+    tileset that you would like to use with the map.
+    
 # VERSION 0.0.2
 
 #    0.0.2
