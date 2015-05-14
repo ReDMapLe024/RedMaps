@@ -24,30 +24,19 @@ public class Main(){
     int height;
     int rows;
     int cols;
+    String src;
     
     int [][] map;
     DiamondSquare ds = new DiamondSquare(8);
     map = ds.getMap();
     
-    //BufferedImage img;
-    BufferedImage[][] sprites = spriteLoader(img, width, height, rows, cols);
+    TileSet tileSet = new TileSet(src, width, height, rows, cols);
     
     smooth(map);
     addBorders(map);
     addEdges(map);
     addCorners(map);
     
-  }
-  
-  public BufferedImage [][] spriteLoader(BufferedImage img, int width, int height, int rows, int cols){
-  
-    BufferedImage[][] sprites = new BufferedImage[rows * cols];
-    
-    for(int i = 0; i < rows; i++){
-      for(int j = 0; j < cols; j++){
-        sprites[r][c] = img.getSubImage(j * width. i * height, width, height);
-      }
-    }
   }
   
   public int[][] smooth(int [][] map){
