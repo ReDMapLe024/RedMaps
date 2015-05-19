@@ -26,7 +26,6 @@ public class Main(){
     JTextField rowsChoise = new JTextField();
     JTextField colsChoise = new JTextField();
     
-    src = fc.getSelectedFile().getAbsolutePath();
     size = Integer.parseInt(sizeChoice.getText());
     width = Integer.parseInt(widthChoice.getText());
     height = Integer.parseInt(heightChoice.getText());
@@ -36,7 +35,10 @@ public class Main(){
     fileChoice.addActionListener(new ActionListener () {
       public void actionPerformed(ActionEvent ae){
         JFilechooser fc = new JFileChooser();
-        string src = fc.getSelectedFile().getAbsolutePath();
+        int returnVal = fileDialog.showOpenDialog(frame);
+        if(returnVal == JFileChooser.APPROVE_OPTION){
+          string src = fc.getSelectedFile().getAbsolutePath();
+        }
       }
     });
     
