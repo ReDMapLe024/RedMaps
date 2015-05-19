@@ -19,7 +19,7 @@ public class Main(){
     JLabel label1 = new JLabel("Welcome to RedMaps!");
     panel.add(label1);
     
-    JFileChooser fc = new JFileChooser();
+    JButton fileChoice = new JButton();
     JTextField sizeChoice = new JTextField();
     JTextField widthChoice = new JTextField();
     JTextField heightChoice = new JTextField();
@@ -32,6 +32,20 @@ public class Main(){
     height = Integer.parseInt(heightChoice.getText());
     rows = Integer.parseInt(rowsChoice.getText());
     cols = Integer.parseInt(colsChoice.getText());
+    
+    fileChoice.addActionListener(new ActionListener () {
+      public void actionPerformed(ActionEvent ae){
+        JFilechooser fc = new JFileChooser();
+        string src = fc.getSelectedFile().getAbsolutePath();
+      }
+    });
+    
+    panel.add(fileChoice);
+    panel.add(sizeChoice);
+    panel.add(widthChoice);
+    panel.add(heightChoice);
+    panel.add(rowsChoice);
+    panel.add(colsChoice);
     
     int [][] map;
   
