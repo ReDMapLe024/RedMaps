@@ -1,3 +1,8 @@
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public class TileSet{
   
   //Dimension of 1 tile
@@ -9,10 +14,10 @@ public class TileSet{
   private int cols;
   
   //tileSet arrays and multidemensional arrays
-  private BufferedImage [] img;
+  private BufferedImage img;
   private BufferedImage[][] tileSet;
   
-  public TileSet(String src, int width, int height, int rows, int cols){
+  public TileSet(String src, int width, int height, int rows, int cols) {
     
     this.rows = rows;
     this.cols = cols;
@@ -20,7 +25,12 @@ public class TileSet{
     this.height = height;
     
     tileSet = new BufferedImage[rows][cols];
-    img = this.getClass().getResourceAsStream(src);
+    try {
+		img = ImageIO.read(getClass().getResourceAsStream(src));
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     spriteLoader();
     
   }
@@ -29,11 +39,11 @@ public class TileSet{
   
     for(int i = 0; i < rows; i++){
       for(int j = 0; j < cols; j++){
-        sprites[i][j] = img.getSubImage(j * width. i * height, width, height);
+        tileSet[i][j] = img.getSubimage(j * width, i * height, width, height);
       }
     }
   }
   
-  public int getTile(int x, int y){ return tileSet[x][y]; }
+  public BufferedImage getTile(int x, int y){ return tileSet[x][y]; }
   
 }
