@@ -30,8 +30,19 @@ public class Main{
 	    
 	    JPanel panel = new JPanel();
 	    panel.setLayout(null);
+	    
 	    JLabel label1 = new JLabel("Welcome to RedMaps!");
+	    JLabel label2 = new JLabel("Select size of Map : ");
+	    JLabel label3 = new JLabel("Select width of Tiles : ");
+	    JLabel label4 = new JLabel("Select Height of Tiles : ");
+	    JLabel label5 = new JLabel("Select number of rows in TileSet : ");
+	    JLabel label6 = new JLabel("Select number of Columns in TileSet : ");
 	    label1.setBounds(130, 1, 150, 20);
+	    label2.setBounds(20, 50, 150, 20);
+	    label3.setBounds(20, 80, 150, 20);
+	    label4.setBounds(20, 110, 150, 20);
+	    label5.setBounds(20, 140, 150, 20);
+	    label6.setBounds(20, 170, 150, 20);
 	    
 	    JButton fileChoice = new JButton("Import TileSet");
 	    fileChoice.setBounds(120, 20, 150, 20);
@@ -47,7 +58,13 @@ public class Main{
 	    rowsChoice.setBounds(120, 140, 150, 20);
 	    JTextField colsChoice = new JTextField();
 	    colsChoice.setBounds(120, 170, 150, 20);
+	    
 	    panel.add(label1);
+	    panel.add(label2);
+	    panel.add(label3);
+	    panel.add(label4);
+	    panel.add(label5);
+	    panel.add(label6);
 	    panel.add(fileChoice);
 	    panel.add(create);
 	    panel.add(sizeChoice);
