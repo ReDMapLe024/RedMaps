@@ -15,7 +15,7 @@ public class TileSet{
   
   //tileSet arrays and multidemensional arrays
   private BufferedImage img;
-  private BufferedImage[][] tileSet;
+  private Tile [][] tileSet;
   
   public TileSet(String src, int width, int height, int rows, int cols) {
     
@@ -39,7 +39,8 @@ public class TileSet{
   
     for(int i = 0; i < rows; i++){
       for(int j = 0; j < cols; j++){
-        tileSet[i][j] = img.getSubimage(j * width, i * height, width, height);
+        tileSet[i][j] = new Tile(img.getSubimage(j * width, i * height, width, height), 1);
+        //Rework method to allow for selection of blocked tiles!!!
       }
     }
   }
