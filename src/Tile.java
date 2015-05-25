@@ -7,7 +7,7 @@ public class Tile{
   private BufferedImage image;
   private int tileType;
 
-  public Tile(Buffered image, int tileType ){
+  public Tile(BufferedImage image, int tileType ){
     
     this.image = image;
     this.tileType = tileType;
