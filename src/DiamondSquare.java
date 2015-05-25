@@ -40,8 +40,7 @@ public class DiamondSquare{
 		
 		for(int i = 0; i < w + 1; i += step * 2){
 			for(int j = 0; j < h + 1; j += step * 2){
-				map[i][j] = (float) ((Math.random()* 2) + 1);
-				
+				map[i][j] = randomize(e);
 			}
 		}
 		
@@ -55,8 +54,7 @@ public class DiamondSquare{
 							+ map[i-step][j+step] 	//bottom-left
 							+ map[i+step][j+step] 	//bottom-right 
 							)/4;
-					map[i][j] = sum; 
-					
+					map[i][j] = sum + randomize(-e, e); 
 				}
 			}
 			
@@ -98,27 +96,34 @@ public class DiamondSquare{
 			step/=2;
 		}
 		
-		 float max = Float.MIN_VALUE;
-		  float min = Float.MAX_VALUE;
-		  for (float[] row : map) {
-		   for (float d : row) {
-		    if (d > max) max = d;
-		    if (d < min) min = d;
-		   }
-		  }
+		float max = Float.MIN_VALUE;
+		float min = Float.MAX_VALUE;
+		for (float[] row : map) {
+		   	for (float d : row) {
+		    		if (d > max) max = d;
+		    		if (d < min) min = d;
+		   	}
+		}
 		
-		  for(int row = 0; row < map.length; row++){
-			   for(int col = 0; col < map[row].length; col++){
-			    map[row][col] = (map[row][col]-min)/(max-min);
-			    if (map[row][col] < water) endMap[row][col] = 1;
-			    else if (map[row][col] < grass) endMap[row][col] = 2;
-			    else if (map[row][col] < forest) endMap[row][col] = 0;
-			    else if (map[row][col] < mountain) endMap[row][col] = 3;
-			    else endMap[row][col] = 8;
-			   }
-			  }
+		for(int row = 0; row < map.length; row++){
+			for(int col = 0; col < map[row].length; col++){
+				map[row][col] = (map[row][col]-min)/(max-min);
+			    	if (map[row][col] < water) endMap[row][col] = 1;
+			    	else if (map[row][col] < grass) endMap[row][col] = 2;
+			    	else if (map[row][col] < forest) endMap[row][col] = 0;
+			    	else if (map[row][col] < mountain) endMap[row][col] = 3;
+			    	else endMap[row][col] = 8;
+			}
+		}
 		return endMap;
-		
+	}
+	
+	public float randomize(float a){
+		return ((float) (Math.random()*a) + 1);
+	}
+	
+	public float randomize(float a, float b){
+		return ((float) (Math.random() * (b - (- a)) + 1) - a);
 	}
 
 
