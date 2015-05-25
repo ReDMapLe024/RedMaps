@@ -36,10 +36,11 @@ public class DiamondSquare{
 		int h = height;
 		
 		float sum = 0;
+		float e = 1;
 		
 		for(int i = 0; i < w + 1; i += step * 2){
 			for(int j = 0; j < h + 1; j += step * 2){
-				map[i][j] = (float) ((Math.random()* 100) + 1);
+				map[i][j] = (float) ((Math.random()* 2) + 1);
 				
 			}
 		}
