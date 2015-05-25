@@ -4,16 +4,16 @@ public class Tile{
   public static final int NORMAL = 1;
   public static final int DOORWAY = 2;
 
-  private BufferedImage [] image;
+  private BufferedImage image;
   private int tileType;
 
-  public Tile(Buffered [] image, int tileType ){
+  public Tile(Buffered image, int tileType ){
     
     this.image = image;
     this.tileType = tileType;
     
   }
   
-  public BufferedImage getImage(int index){ return image[index]; }
+  public BufferedImage getImage(int index){ return image; }
   public int getTileType(){ return tileType; }
 }
