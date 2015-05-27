@@ -96,7 +96,7 @@ public class Main{
 	    
 	    int [][] map;
 	  
-	    MapGenerator mg = new MapGenerator(size);
+	    MapGenerator mg = new MapGenerator(size, ts);
 	    map = mg.getMap();
 	}
   public static void main(String [] args){
