@@ -18,10 +18,12 @@ public class MapGenerator{
   private static final int MOUNTAIN = 14;
     
   private DiamondSquare ds;
+  private TileSet ts;
   private int [][] map;
     
-  public MapGenerator(int size){
+  public MapGenerator(int size, TileSet ts){
    
+  	this.ts = ts;
     ds = new DiamondSquare(size);
     map = ds.getMap();
     
