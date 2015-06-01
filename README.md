@@ -26,4 +26,4 @@
         - Water corners are being added in areas that have no water.
         - Terrain does not seem to gradually change. Variation in height is to great
           and causes sharp changes in landscape.
-        - 
+        - Terrain smoothing is also not working in some cases.
