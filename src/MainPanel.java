@@ -11,7 +11,9 @@ public class MainPanel extends JPanel implements Runnable{
 	private int size;
 	
 	private String src;
-    
+    	
+    	private Camera cm;
+    	
     	private BufferedImage image;
     	private Graphics2D g;
     	
@@ -97,11 +99,15 @@ public class MainPanel extends JPanel implements Runnable{
 		mg = new MapGenerator(size);
 		g = (Graphics2D) image.getGraphics();
 		map = mg.getMap();
-		draw(map);
+		draw();
 	}
 	
 	public void draw(){
-		
+		for(int i = 0; i < map.length; i++){
+			for(int j = 0; j < map.length; j++){
+				g.drawImage(ts.getTile(map[i][j]).getImage(), cm.getX() + (i * width), cm.getY() + (j * width), null));
+			}
+		}
 	}
 	
 	public void update(){
