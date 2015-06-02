@@ -1,4 +1,4 @@
-public class MainPanel extends JPanel{
+public class MainPanel extends JPanel implements Runnable{
 	
 	private TileSet ts;
 	
@@ -12,6 +12,12 @@ public class MainPanel extends JPanel{
 	
 	private String src;
     
+    	private BufferedImage image;
+    	private Graphics2D g;
+    	
+    	int [][] map;
+    	private MapGenerator mg;
+
 	public MainPanel(){
 	    
 	    JPanel panel = new JPanel();
@@ -23,6 +29,7 @@ public class MainPanel extends JPanel{
 	    JLabel label4 = new JLabel("Select Height of Tiles : ");
 	    JLabel label5 = new JLabel("Select number of rows in TileSet : ");
 	    JLabel label6 = new JLabel("Select number of Columns in TileSet : ");
+	    
 	    label1.setBounds(130, 1, 150, 20);
 	    label2.setBounds(20, 50, 150, 20);
 	    label3.setBounds(20, 80, 150, 20);
@@ -32,16 +39,22 @@ public class MainPanel extends JPanel{
 	    
 	    JButton fileChoice = new JButton("Import TileSet");
 	    fileChoice.setBounds(120, 20, 150, 20);
+	    
 	    JButton create = new JButton("Create Map!");
 	    create.setBounds(145, 200, 100, 20);
+	    
 	    JTextField sizeChoice = new JTextField();
 	    sizeChoice.setBounds(120, 50, 150, 20);
+	    
 	    JTextField widthChoice = new JTextField();
 	    widthChoice.setBounds(120, 80, 150, 20);
+	    
 	    JTextField heightChoice = new JTextField();
 	    heightChoice.setBounds(120, 110, 150, 20);
+	    
 	    JTextField rowsChoice = new JTextField();
 	    rowsChoice.setBounds(120, 140, 150, 20);
+	    
 	    JTextField colsChoice = new JTextField();
 	    colsChoice.setBounds(120, 170, 150, 20);
 	    
@@ -71,13 +84,27 @@ public class MainPanel extends JPanel{
 	          rows = Integer.parseInt(rowsChoice.getText());
 	          cols = Integer.parseInt(colsChoice.getText());
 	          ts = new TileSet(src, width, height, rows, cols);
-	         
-	        }
+	        }	
 	      }});
-	    
-	    int [][] map;
-	  
-	    MapGenerator mg = new MapGenerator(size, ts);
-	    map = mg.getMap();
+	}
+	
+	public void run(){
+		init();
+	}
+	
+	public void init(){
+		map = new int[width][height];
+		mg = new MapGenerator(size);
+		
+		map = mg.getMap();
+		draw(map);
+	}
+	
+	public void draw(){
+		
+	}
+	
+	public void update(){
+		
 	}
 }
