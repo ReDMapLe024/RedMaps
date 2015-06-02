@@ -95,7 +95,7 @@ public class MainPanel extends JPanel implements Runnable{
 	public void init(){
 		map = new int[width][height];
 		mg = new MapGenerator(size);
-		
+		g = (Graphics2D) image.getGraphics();
 		map = mg.getMap();
 		draw(map);
 	}
