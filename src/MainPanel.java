@@ -1,15 +1,18 @@
-public class Main{
+public class MainPanel extends JPanel{
+	
 	private TileSet ts;
 	
 	private int width;
 	private int height;
+	
 	private int rows;
 	private int cols;
+	
 	private int size;
+	
 	private String src;
     
-	
-	public Main() extends JPanel{
+	public MainPanel(){
 	    
 	    JPanel panel = new JPanel();
 	    panel.setLayout(null);
@@ -77,6 +80,4 @@ public class Main{
 	    MapGenerator mg = new MapGenerator(size, ts);
 	    map = mg.getMap();
 	}
-  public static void main(String [] args){
-    Main main = new Main();
-  }
+}
