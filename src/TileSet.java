@@ -15,7 +15,7 @@ public class TileSet{
   
   //tileSet arrays and multidemensional arrays
   private BufferedImage img;
-  private Tile [][] tileSet;
+  private Tile [] tileSet;
   
   public TileSet(String src, int width, int height, int rows, int cols) {
     
@@ -24,7 +24,7 @@ public class TileSet{
     this.width = width;
     this.height = height;
     
-    tileSet = new BufferedImage[rows][cols];
+    tileSet = new BufferedImage[rows];
     try {
 		img = ImageIO.read(getClass().getResourceAsStream(src));
 	} catch (IOException e) {
@@ -38,13 +38,11 @@ public class TileSet{
   public void spriteLoader(){
   
     for(int i = 0; i < rows; i++){
-      for(int j = 0; j < cols; j++){
-        tileSet[i][j] = new Tile(img.getSubimage(j * width, i * height, width, height), 1);
+        tileSet[i] = new Tile(img.getSubimage(j * width, i * height, width, height), 1);
         //Rework method to allow for selection of blocked tiles!!!
-      }
     }
   }
   
-  public BufferedImage getTile(int x, int y){ return tileSet[x][y]; }
+  public BufferedImage getTile(int x){ return tileSet[x]; }
   
 }
